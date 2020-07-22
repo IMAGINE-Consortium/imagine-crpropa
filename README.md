@@ -1,8 +1,16 @@
 # IMAGINE and CRPropa integration
 
+*This package is still under development*
+
 This package provides interfaces between [CRPropa](https://crpropa.desy.de/)
 and [IMAGINE pipeline](https://github.com/IMAGINE-Consortium/imagine/).
-It allows using CRPropa Fields within IMAGINE and
+
+First and foremost, it allows using CRPropa as an IMAGINE [Simulator](https://imagine-code.readthedocs.io/en/latest/components.html#simulators), which can take
+IMAGINE Fields as input and can also be included in a [Pipeline](https://imagine-code.readthedocs.io/en/latest/components.html#pipeline) object. 
+
+The package also provides IMAGINE [Fields](https://imagine-code.readthedocs.io/en/latest/components.html#fields)
+which wrap around magnetic field models originally developed for use within CRPropa
+which may have other uses by the IMAGINE community.
 
 ## Installation
 
