@@ -31,20 +31,14 @@ class CRPropaHelicalField(MagneticField):
     """
     NAME = 'CRPropa_helical_random_magnetic_field'
     STOCHASTIC_FIELD = True
-
-    @property
-    def field_checklist(self):
-        return {'Brms': None,
-                'min_scale': None,
-                'max_scale': None,
-                'alpha': None,
-                'helicity_factor': None}
+    PARAMETER_NAMES = ['Brms', 'min_scale', 'max_scale', 'alpha', 'helicity_factor']
 
     def compute_field(self, seed):
         # Extracts grid information
         assert self.grid.grid_type == 'cartesian', 'Only cartesian grids are supported'
-        boxOrigin = crp.Vector3d(*self.grid.box[:,0].si.value)
-        boxEnd = crp.Vector3d(*self.grid.box[:,1].si.value)
+        box = self.grid.box 
+        boxOrigin = crp.Vector3d(box[0][0].si.value, box[1][0].si.value, box[2][0].si.value)
+        boxEnd = crp.Vector3d(box[0][1].si.value, box[1][1].si.value, box[2][1].si.value)
         gridPoints = crp.Vector3d(*self.grid.resolution.astype(float))
         gridSpacing = (boxEnd-boxOrigin)/gridPoints
 
